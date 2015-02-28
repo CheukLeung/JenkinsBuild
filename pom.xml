@@ -53,6 +53,7 @@ limitations under the License.
               <Gerrit-ApiVersion>${Gerrit-ApiVersion}</Gerrit-ApiVersion>
 
               <Gerrit-ReloadMode>restart</Gerrit-ReloadMode>
+              <Gerrit-InitStep>com.googlesource.gerrit.plugins.jenkinsbuild.JenkinsbuildInitStep</Gerrit-InitStep>
             </manifestEntries>
           </archive>
         </configuration>

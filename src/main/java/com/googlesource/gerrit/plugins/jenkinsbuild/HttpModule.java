@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.testplugin;
+package com.googlesource.gerrit.plugins.jenkinsbuild;
 
-import com.google.gerrit.sshd.PluginCommandModule;
+import com.google.inject.servlet.ServletModule;
 
-class SshModule extends PluginCommandModule {
+class HttpModule extends ServletModule {
   @Override
-  protected void configureCommands() {
-    // command("my-command").to(MyCommand.class);
+  protected void configureServlets() {
+    // TODO
   }
 }

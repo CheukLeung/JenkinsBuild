@@ -14,19 +14,19 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.googlesource.gerrit.plugins.testplugin</groupId>
+  <groupId>com.googlesource.gerrit.plugins</groupId>
   <artifactId>jenkins-build</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.1-SNAPSHOT</version>
   <name>jenkins-build</name>
 
   <properties>
     <Gerrit-ApiType>plugin</Gerrit-ApiType>
-    <Gerrit-ApiVersion>2.12-SNAPSHOT</Gerrit-ApiVersion>
+    <Gerrit-ApiVersion>2.10-SNAPSHOT</Gerrit-ApiVersion>
   </properties>
 
   <build>
@@ -38,19 +38,21 @@ limitations under the License.
         <configuration>
           <archive>
             <manifestEntries>
-              <Gerrit-PluginName>jenkins-build</Gerrit-PluginName>
-              <Gerrit-Module>com.googlesource.gerrit.plugins.testplugin.Module</Gerrit-Module>
-              <Gerrit-SshModule>com.googlesource.gerrit.plugins.testplugin.SshModule</Gerrit-SshModule>
-              <Gerrit-HttpModule>com.googlesource.gerrit.plugins.testplugin.HttpModule</Gerrit-HttpModule>
+              <Gerrit-PluginName>jenkinsbuild</Gerrit-PluginName>
+              <Gerrit-Module>com.googlesource.gerrit.plugins.jenkinsbuild.Module</Gerrit-Module>
+              <Gerrit-SshModule>com.googlesource.gerrit.plugins.jenkinsbuild.SshModule</Gerrit-SshModule>
+              <Gerrit-HttpModule>com.googlesource.gerrit.plugins.jenkinsbuild.HttpModule</Gerrit-HttpModule>
 
               <Implementation-Vendor>Gerrit Code Review</Implementation-Vendor>
               <Implementation-URL>http://code.google.com/p/gerrit/</Implementation-URL>
 
-              <Implementation-Title>${Gerrit-ApiType} ${project.artifactId}</Implementation-Title>
+              <Implementation-Title>Jenkins Build</Implementation-Title>
               <Implementation-Version>${project.version}</Implementation-Version>
 
               <Gerrit-ApiType>${Gerrit-ApiType}</Gerrit-ApiType>
               <Gerrit-ApiVersion>${Gerrit-ApiVersion}</Gerrit-ApiVersion>
+
+              <Gerrit-ReloadMode>restart</Gerrit-ReloadMode>
             </manifestEntries>
           </archive>
         </configuration>
@@ -80,8 +82,8 @@ limitations under the License.
 
   <repositories>
     <repository>
-      <id>snapshot-repository</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+      <id>gerrit-api-repository</id>
+      <url>http://gerritforge.com/snapshot/</url>
     </repository>
   </repositories>
 </project>

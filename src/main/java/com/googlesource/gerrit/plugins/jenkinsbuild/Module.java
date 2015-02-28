@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.testplugin;
+package com.googlesource.gerrit.plugins.jenkinsbuild;
 
-import com.google.inject.servlet.ServletModule;
+import com.google.inject.AbstractModule;
 
-class HttpModule extends ServletModule {
+class Module extends AbstractModule {
   @Override
-  protected void configureServlets() {
+  protected void configure() {
     // TODO
   }
 }

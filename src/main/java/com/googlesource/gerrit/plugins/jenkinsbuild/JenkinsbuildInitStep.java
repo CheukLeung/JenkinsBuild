@@ -9,6 +9,7 @@ import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.pgm.init.AllProjectsConfig;
 import com.google.gerrit.pgm.init.InitStep;
 import com.google.gerrit.pgm.util.ConsoleUI;
+import javax.inject.Inject;
 import org.eclipse.jgit.lib.Config;
 
 /**
@@ -21,6 +22,7 @@ public class JenkinsbuildInitStep implements InitStep {
   private final ConsoleUI ui;
   private final AllProjectsConfig allProjectsConfig;
 
+  @Inject
   public JenkinsbuildInitStep(@PluginName String pluginName, ConsoleUI ui,
       AllProjectsConfig allProjectsConfig) {
     this.pluginName = pluginName;

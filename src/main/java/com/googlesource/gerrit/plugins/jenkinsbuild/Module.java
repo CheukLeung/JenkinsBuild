@@ -35,25 +35,25 @@ class Module extends AbstractModule {
         .annotatedWith(Exports.named("jenkins"))
         .toInstance(new ProjectConfigEntry(
                 "Jenkins server address",
-                "localhost")
+                "localhost", true)
         );
     bind(ProjectConfigEntry.class)
         .annotatedWith(Exports.named("port"))
         .toInstance(new ProjectConfigEntry(
                 "Jenkins server port",
-                "8080")
+                "8080", true)
         );
     bind(ProjectConfigEntry.class)
         .annotatedWith(Exports.named("user"))
         .toInstance(new ProjectConfigEntry(
                 "Account to access Jenkins",
-                "gerrit")
+                "gerrit", true)
         );
     bind(ProjectConfigEntry.class)
         .annotatedWith(Exports.named("ssh-key"))
         .toInstance(new ProjectConfigEntry(
                 "SSH key file for the user to access Jenkins",
-                "/home/gerrit2/.ssh/id_rsa")
+                "/home/gerrit2/.ssh/id_rsa", true)
         );
   }
 }

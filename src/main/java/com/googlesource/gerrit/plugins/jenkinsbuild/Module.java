@@ -14,11 +14,42 @@
 
 package com.googlesource.gerrit.plugins.jenkinsbuild;
 
+import com.google.gerrit.extensions.annotations.Exports;
+import com.google.gerrit.server.config.ProjectConfigEntry;
 import com.google.inject.AbstractModule;
 
 class Module extends AbstractModule {
   @Override
   protected void configure() {
-    // TODO
+    bind(ProjectConfigEntry.class)
+        .annotatedWith(Exports.named("enabled"))
+        .toInstance(new ProjectConfigEntry(
+                "Enable JenkinsBuild",
+                true)
+        );
+    bind(ProjectConfigEntry.class)
+        .annotatedWith(Exports.named("jenkins"))
+        .toInstance(new ProjectConfigEntry(
+                "Jenkins server address",
+                "localhost")
+        );
+    bind(ProjectConfigEntry.class)
+        .annotatedWith(Exports.named("port"))
+        .toInstance(new ProjectConfigEntry(
+                "Jenkins server port",
+                "8080")
+        );
+    bind(ProjectConfigEntry.class)
+        .annotatedWith(Exports.named("user"))
+        .toInstance(new ProjectConfigEntry(
+                "Account to access Jenkins",
+                "gerrit")
+        );
+    bind(ProjectConfigEntry.class)
+        .annotatedWith(Exports.named("ssh-key"))
+        .toInstance(new ProjectConfigEntry(
+                "SSH key file for the user to access Jenkins",
+                "/home/gerrit2/.ssh/id_rsa")
+        );
   }
 }

@@ -21,6 +21,10 @@ import com.google.inject.AbstractModule;
 class Module extends AbstractModule {
   @Override
   protected void configure() {
+    configurePluginParameters();
+  }
+
+  private void configurePluginParameters(){
     bind(ProjectConfigEntry.class)
         .annotatedWith(Exports.named("enabled"))
         .toInstance(new ProjectConfigEntry(

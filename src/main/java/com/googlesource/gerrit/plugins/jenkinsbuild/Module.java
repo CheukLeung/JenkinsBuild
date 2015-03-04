@@ -14,13 +14,23 @@
 
 package com.googlesource.gerrit.plugins.jenkinsbuild;
 
+import static com.google.gerrit.server.change.RevisionResource.REVISION_KIND;
+
 import com.google.gerrit.extensions.annotations.Exports;
+import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.google.gerrit.server.config.ProjectConfigEntry;
 import com.google.inject.AbstractModule;
 
 class Module extends AbstractModule {
   @Override
   protected void configure() {
+    install(new RestApiModule() {
+      @Override
+      protected void configure() {
+        post(REVISION_KIND, "jenkinsbuild-revision")
+                .to(JenkinsbuildRevisionAction.class);
+      }
+    });
     configurePluginParameters();
   }
 
